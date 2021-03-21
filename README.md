@@ -175,7 +175,37 @@ constructor átírva a listObservable-re
     private hservice: HeroService,
   ) {
     this.listObservable = this.hservice.getAll();
-
+--
 12. app.component.html:
-async
+async, *ngFor, *ngIf
+<h2>List of Heroes</h2>
+<ul>
+  <li *ngFor="let hero of listObservable | async">
+    <button class="btn btn-info">{{ hero.name }}  </button>
+  </li>
+</ul>
+<h2>Hero details</h2>
+<app-hero-detail *ngIf="myHero" [hero]="myHero"></app-hero-detail>
+--
+13. app.component.ts:
+myHero kiürítése
+
+  myHero: Hero = new Hero();
+--
+14. app.component.html:
+gombra eseménykezelő
+
+  <button (click)="setHero(hero)" class="btn btn-info">{{ hero.name }}  </button>
+
+de így is működik, és nem kell átadni a .ts-nek:
+  (click)="myHero = hero"
+--
+15. app.component.ts:
+setHero metódus
+
+  setHero(hero: Hero): void {
+    this.myHero = hero;
+  }
+--
+16.
 

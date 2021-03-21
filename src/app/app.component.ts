@@ -11,11 +11,12 @@ import { HeroService } from './service/hero.service';
 })
 export class AppComponent {
   title = 'Greeniland';
-  myHero: Hero = {
-    name: 'Magneto',
-    address: 'New York',
-    superpower: 'hard'
-  };
+  myHero: Hero = new Hero();
+  // {
+  // name: 'Magneto',
+  // address: 'New York',
+  // superpower: 'hard'
+  // };
   listObservable: Observable<any> = new Observable();
 
   constructor(
@@ -38,4 +39,9 @@ export class AppComponent {
     // this.hservice.remove( 2 )
     //   .forEach( value => console.log("Deleted hero 2: ") );
   }
+
+  setHero(hero: Hero): void {
+    this.myHero = hero;
+  }
+
 }
