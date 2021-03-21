@@ -161,3 +161,21 @@ constructor módosult
 
 10. a json-file-t a src-mappán kívülre kell mozgatni,
 különben ciklikusan frissíti magát az alkalmazás
+-------------------------
+eddig volt az 123a, 
+az 3. Angular 2 plusz keretrendszer - Ajax és Angular,
+mostantól az 123b
+az Angular Async - a beépített async pipe használata alapján
+-------------------------
+11. app.component.ts:
+constructor átírva a listObservable-re
+
+  constructor(
+    private fservice: FootballService,
+    private hservice: HeroService,
+  ) {
+    this.listObservable = this.hservice.getAll();
+
+12. app.component.html:
+async
+
